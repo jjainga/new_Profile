@@ -1,14 +1,52 @@
+<script src="https://kit.fontawesome.com/c89de3f186.js" crossorigin="anonymous"></script>
 {% extends 'base.html' %}
 
 {%block content%}
 
 
-    <div>
-        <div>
-            <h1>Projects</h1>
+    <div class="">
+        <div class="row mx-auto border p-2">
+            <div class="col mx-auto">
+                <div class="card" style="width: 18rem;">
+                    <img src="https://media-exp1.licdn.com/dms/image/D5603AQHxkjhKovJ5MQ/profile-displayphoto-shrink_800_800/0/1668132109773?e=1673481600&v=beta&t=p3TPRExb-MUMS5WVAkM12zGQPNxKmxODxZW417x39S4" class="card-img-top" alt="...">
+                </div>
+            </div>
+            <div class="col mx-auto">
+                <p>
+                    Full Stack Developer developer and Data Analyst leveraging economics and operations management background to help solve complex problems in order to improve user experience. 
+                </p>
+                <ul>
+                    <li>
+                        - Built financial models to help identify +30 million in savings
+                    </li>
+                    <li>
+                        - Preformed statistical analysis to target specific KPIs to help drive business decisions
+                    </li>
+                    <li>
+                        - Create dynamic dashboards for leaders to track financial and operation metrics to help drive results with their teams
+                    </li>   
+                </ul>
+                <p>
+                     Quick to learn, integrate new knowledge to benefit the team I am supporting. I am excited to continue to grow my skills to build a better experience for everyone.
+                </p>
+            </div>
         </div>
         <div class="row">
-                <h1>Hello World</h1>
+            {{ pdf.pdf }}
+        </div>
+        <div class="row mx-auto d-grid gap-2 border text-dark">
+            {% for repo in repos %}
+            <div class="col p-1 bg-light border">
+                <div class="card">
+                    <h5 class="card-header">{{ repo.name }}</h5>
+                    <div class="card-body">
+                      <a class="card-title" href="{{ repo.html_url }}">{{ repo.html_url }}</a>
+                      <p class="card-text">{{ repo.description }}</p>
+                      <p class="card-text">{{ repo.language }}</p>
+                    </div>
+                  </div>
+            </div>
+            {% endfor %}   
         </div>
     </div>
 {% endblock %}
