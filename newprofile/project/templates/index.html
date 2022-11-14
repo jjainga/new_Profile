@@ -34,17 +34,20 @@
         <div class="row">
             {{ pdf.pdf }}
         </div>
+        <div class="row">
+            <h1>Projects</h1>
+        </div>
         <div class="row mx-auto d-grid gap-2 border text-dark">
             {% for repo in repos %}
             <div class="col p-1 bg-light border">
                 <div class="card">
                     <h5 class="card-header">{{ repo.name }}</h5>
                     <div class="card-body">
-                      <a class="card-title" href="{{ repo.html_url }}">{{ repo.html_url }}</a>
+                      <a class="card-title" href="{{ repo.repo.html_url }}">{{ repo.html_url }}</a>
                       <p class="card-text">{{ repo.description }}</p>
                       <div class=""row>
                           <p class="card-text">{{ repo.language }}</p>
-                          <p>{{repo.events_url}}</p>
+                          <p>{% if repo.events_url %}{{ repo.events_url.get_commit }}{% endif %}</p>
 
                       </div>
                     </div>

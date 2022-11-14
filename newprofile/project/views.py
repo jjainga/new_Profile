@@ -1,22 +1,25 @@
 # Create your views here.
-from django.http import HttpResponse, FileResponse, Http404
-from django.shortcuts import render
 import requests
+from django.http import Http404, HttpResponse
+from django.shortcuts import render
 
-# Create your views here.
+
 #need to map the url to this function
 def index(request):
-    github_data = requests.get("https://api.github.com/users/jjainga/repos")
-    repo_data = github_data.json
+    repo_list = get_request(request)
+
 
     return render(
         request,
         'index.html',
          {
-        'repos' : repo_data
+        'repos' : repo_list
          }
         )
 
+def get_request(request):
+    repo_list = requests.get("https://api.github.com/users/jjainga/repos").json
+    return repo_list
 
 def pdf_view(request):
     with open('./static/Joshua_Jainga_cv.pdf', 'rd') as pdf:
@@ -27,9 +30,3 @@ def pdf_view(request):
         except FileNotFoundError:
             raise Http404()
     pdf.closed
-
-
-def get_commits(url):
-    commits = requests.get(url)
-    commits_total = len(commits)
-    return commits_total
