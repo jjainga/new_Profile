@@ -1,6 +1,6 @@
 <script src="https://kit.fontawesome.com/c89de3f186.js" crossorigin="anonymous"></script>
 {% extends 'base.html' %}
-
+<&! import request %>
 {%block content%}
 
 
@@ -17,13 +17,13 @@
                 </p>
                 <ul>
                     <li>
-                        - Built financial models to help identify +30 million in savings
+                         Built financial models to help identify +30 million in savings
                     </li>
                     <li>
-                        - Preformed statistical analysis to target specific KPIs to help drive business decisions
+                         Preformed statistical analysis to target specific KPIs to help drive business decisions
                     </li>
                     <li>
-                        - Create dynamic dashboards for leaders to track financial and operation metrics to help drive results with their teams
+                         Create dynamic dashboards for leaders to track financial and operation metrics to help drive results with their teams
                     </li>   
                 </ul>
                 <p>
@@ -42,7 +42,11 @@
                     <div class="card-body">
                       <a class="card-title" href="{{ repo.html_url }}">{{ repo.html_url }}</a>
                       <p class="card-text">{{ repo.description }}</p>
-                      <p class="card-text">{{ repo.language }}</p>
+                      <div class=""row>
+                          <p class="card-text">{{ repo.language }}</p>
+                          <p>{{repo.events_url}}</p>
+
+                      </div>
                     </div>
                   </div>
             </div>

@@ -19,7 +19,7 @@ def index(request):
 
 
 def pdf_view(request):
-    with open('static/Joshua_Jainga_cv.pdf', 'rd') as pdf:
+    with open('./static/Joshua_Jainga_cv.pdf', 'rd') as pdf:
         try:
             response = HttpResponse(pdf.read(), content_type='application/pdf')
             response['Content-Dispostion'] = 'filename=Joshua_Jainga_cv.pdf'
@@ -27,3 +27,9 @@ def pdf_view(request):
         except FileNotFoundError:
             raise Http404()
     pdf.closed
+
+
+def get_commits(url):
+    commits = requests.get(url)
+    commits_total = len(commits)
+    return commits_total
